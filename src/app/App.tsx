@@ -12,7 +12,7 @@ const App = () => {
         <div className={classNames('app', {},[theme])}>
             <button onClick={toggleTheme}>Change Theme</button>
             <div>
-                <Link to={'/'}>Main</Link>
+                <Link to={'/'}>Main</Link>&nbsp;
                 <Link to={'/about'}>About</Link>
             </div>
             <Suspense fallback={<div>Loading...</div>}>
