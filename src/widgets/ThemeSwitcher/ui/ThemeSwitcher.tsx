@@ -18,7 +18,7 @@ export const ThemeSwitcher = ({className}: ThemeSwitcherProps) => {
             theme={AppThemeButton.CLEAR}
             onClick={toggleTheme}
         >
-            {theme === Theme.DARK ? <SunIcon width={40} className={classNames(cls.icon)} /> : <MoonIcon width={40} height={40} className={classNames(cls.icon)} />}
+            {theme === Theme.DARK ? <SunIcon width={40} className={classNames(cls.icon)} /> : <MoonIcon width={40} className={classNames(cls.icon)} />}
         </AppButton>
     );
 };
