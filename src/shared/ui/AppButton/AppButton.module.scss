@@ -1,17 +1,17 @@
 .appButton {
-  padding: 5px 8px;
-  cursor: pointer;
-  color: var(--primary-color-inverted);
+    padding: 5px 8px;
+    cursor: pointer;
+    color: var(--primary-color-inverted);
 }
 
 .clear {
-  padding: 0;
-  border: none;
-  background: none;
-  outline: none;
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
 }
 
 .outlined {
-  background: none;
-  border: 1px solid var(--primary-color-inverted);
+    background: none;
+    border: 1px solid var(--primary-color-inverted);
 }

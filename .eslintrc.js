@@ -6,6 +6,7 @@ module.exports = {
     extends: [
         'plugin:react/recommended',
         'airbnb',
+        'plugin:i18next/recommended',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -18,6 +19,7 @@ module.exports = {
     plugins: [
         'react',
         '@typescript-eslint',
+        'i18next',
     ],
     rules: {
         'no-unused-vars': 'off',
@@ -37,6 +39,7 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'warn',
+        'i18next/no-literal-string': ['error', { markupOnly: true }],
 
     },
     globals: {
