@@ -27,7 +27,7 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': ['warn'],
         'no-shadow': 'off',
         'no-underscore-dangle': 'off',
-        'max-len': [2, 120],
+        'max-len': [2, 120, { ignoreComments: true }],
         indent: [2, 4],
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
