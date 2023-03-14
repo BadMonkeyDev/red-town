@@ -1,4 +1,4 @@
-import { AppButton, AppThemeButton } from 'shared/ui/AppButton/AppButton';
+import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -19,7 +19,7 @@ export const BugButton = () => {
         <AppButton
             onClick={throwError}
             type="button"
-            theme={AppThemeButton.OUTLINED}
+            variant={AppButtonVariant.OUTLINED}
         >
             {t('throw error')}
         </AppButton>

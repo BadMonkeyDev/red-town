@@ -3,7 +3,9 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { AppButton, AppThemeButton } from './AppButton';
+import {
+    AppButton, AppButtonColor, AppButtonSize, AppButtonVariant,
+} from './AppButton';
 
 export default {
     title: 'shared/AppButton',
@@ -15,26 +17,81 @@ export default {
 
 const Template: ComponentStory<typeof AppButton> = (args) => <AppButton {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Contained = Template.bind({});
+Contained.args = {
     children: 'Button',
+    variant: AppButtonVariant.CONTAINED,
 };
 
 export const Clear = Template.bind({});
 Clear.args = {
     children: 'Button',
-    theme: AppThemeButton.CLEAR,
+    variant: AppButtonVariant.CLEAR,
 };
 
 export const Outlined = Template.bind({});
 Outlined.args = {
     children: 'Button',
-    theme: AppThemeButton.OUTLINED,
+    variant: AppButtonVariant.OUTLINED,
 };
 
 export const OutlinedDark = Template.bind({});
 OutlinedDark.decorators = [ThemeDecorator(Theme.DARK)];
 OutlinedDark.args = {
     children: 'Button',
-    theme: AppThemeButton.OUTLINED,
+    variant: AppButtonVariant.OUTLINED,
+};
+
+export const Primary = Template.bind({});
+Primary.args = {
+    children: 'Button',
+    color: AppButtonColor.PRIMARY,
+};
+
+export const PrimaryInverted = Template.bind({});
+PrimaryInverted.args = {
+    children: 'Button',
+    color: AppButtonColor.PRIMARY_INVERTED,
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+    children: 'Button',
+    color: AppButtonColor.SECONDARY,
+};
+export const SecondaryInverted = Template.bind({});
+SecondaryInverted.args = {
+    children: 'Button',
+    color: AppButtonColor.SECONDARY_INVERTED,
+};
+
+export const SquareSecondaryInverted = Template.bind({});
+SquareSecondaryInverted.args = {
+    children: '>',
+    color: AppButtonColor.SECONDARY_INVERTED,
+    square: true,
+};
+
+export const SizeMOutlined = Template.bind({});
+SizeMOutlined.args = {
+    children: '<',
+    square: true,
+    variant: AppButtonVariant.OUTLINED,
+    size: AppButtonSize.M,
+};
+
+export const SizeLOutlined = Template.bind({});
+SizeLOutlined.args = {
+    children: '<',
+    square: true,
+    variant: AppButtonVariant.OUTLINED,
+    size: AppButtonSize.L,
+};
+
+export const SizeXLOutlined = Template.bind({});
+SizeXLOutlined.args = {
+    children: '<',
+    square: true,
+    variant: AppButtonVariant.OUTLINED,
+    size: AppButtonSize.XL,
 };

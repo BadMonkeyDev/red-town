@@ -3,7 +3,7 @@ import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import React, { FC } from 'react';
 import SunIcon from 'shared/assets/icons/sun.svg';
 import MoonIcon from 'shared/assets/icons/moon.svg';
-import { AppButton, AppThemeButton } from 'shared/ui/AppButton/AppButton';
+import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
 import cls from './ThemeSwitcher.module.scss';
 
 export enum ThemeSwitcherColor {
@@ -25,7 +25,7 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
     return (
         <AppButton
             className={classNames(cls.themeSwitcher, {}, [className])}
-            theme={AppThemeButton.CLEAR}
+            variant={AppButtonVariant.CLEAR}
             onClick={toggleTheme}
         >
             {theme === Theme.DARK

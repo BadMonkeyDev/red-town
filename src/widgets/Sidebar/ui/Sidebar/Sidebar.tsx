@@ -2,8 +2,11 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import React, { useState } from 'react';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
-import { AppButton, AppThemeButton } from 'shared/ui/AppButton/AppButton';
-import { useTranslation } from 'react-i18next';
+import {
+    AppButton, AppButtonColor, AppButtonSize, AppButtonVariant,
+} from 'shared/ui/AppButton/AppButton';
+import { Navbar } from 'widgets/Navbar';
+import { NavbarDirection, NavbarMode } from 'widgets/Navbar/ui/Navbar';
 import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -12,7 +15,6 @@ interface SidebarProps {
 
 export const Sidebar = ({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
-    const { t } = useTranslation();
 
     const onToggle = () => {
         setCollapsed((prevState) => !prevState);
@@ -23,16 +25,24 @@ export const Sidebar = ({ className }: SidebarProps) => {
             data-testid="sidebar"
             className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [className])}
         >
+            <Navbar
+                direction={NavbarDirection.COLUMN}
+                mode={collapsed ? NavbarMode.ICONS : NavbarMode.LINKS_AND_ICONS}
+            />
             <AppButton
                 data-testid="sidebar-toggle"
-                theme={AppThemeButton.OUTLINED}
+                square
+                variant={AppButtonVariant.CONTAINED}
+                color={AppButtonColor.PRIMARY_INVERTED}
+                size={AppButtonSize.L}
                 onClick={onToggle}
+                className={classNames(cls.collapsedBtn)}
             >
-                {t('toggle')}
+                {collapsed ? '>' : '<'}
             </AppButton>
             <div className={classNames(cls.switchers)}>
                 <ThemeSwitcher />
-                <LangSwitcher />
+                <LangSwitcher short={collapsed} />
             </div>
         </div>
     );

@@ -1,14 +1,16 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import React from 'react';
-import { AppButton, AppThemeButton } from 'shared/ui/AppButton/AppButton';
+import React, { FC } from 'react';
+import { AppButton, AppButtonColor, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
 import cls from './LangSwitcher.module.scss';
 
 interface LangSwitcherProps {
     className?: string;
+    short?: boolean;
 }
 
-export const LangSwitcher = ({ className }: LangSwitcherProps) => {
+export const LangSwitcher: FC<LangSwitcherProps> = (props) => {
+    const { className, short } = props;
     const { t, i18n } = useTranslation();
     const toggleLanguage = () => {
         i18n.changeLanguage(i18n.language === 'en' ? 'ua' : 'en');
@@ -16,10 +18,12 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
     return (
         <AppButton
             className={classNames(cls.langSwitcher, {}, [className, cls.button])}
-            theme={AppThemeButton.CLEAR}
+            variant={AppButtonVariant.CLEAR}
+            color={AppButtonColor.PRIMARY_INVERTED}
             onClick={toggleLanguage}
         >
-            {t('Language')}
+
+            {t(short ? 'Short language' : 'Language')}
         </AppButton>
     );
 };
