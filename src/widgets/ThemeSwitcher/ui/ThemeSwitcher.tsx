@@ -1,16 +1,26 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
-import React from 'react';
+import React, { FC } from 'react';
 import SunIcon from 'shared/assets/icons/sun.svg';
 import MoonIcon from 'shared/assets/icons/moon.svg';
 import { AppButton, AppThemeButton } from 'shared/ui/AppButton/AppButton';
 import cls from './ThemeSwitcher.module.scss';
 
-interface ThemeSwitcherProps {
-    className?: string;
+export enum ThemeSwitcherColor {
+    YELLOW='yellow',
+    PURPLE='purple',
 }
 
-export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
+interface ThemeSwitcherProps {
+    className?: string;
+    color?: ThemeSwitcherColor;
+}
+
+export const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
+    const {
+        color = ThemeSwitcherColor.YELLOW,
+        className,
+    } = props;
     const { theme, toggleTheme } = useTheme();
     return (
         <AppButton
@@ -19,8 +29,8 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
             onClick={toggleTheme}
         >
             {theme === Theme.DARK
-                ? <SunIcon width={40} className={classNames(cls.icon)} />
-                : <MoonIcon width={40} className={classNames(cls.icon)} />}
+                ? <SunIcon width={40} className={classNames(cls.icon, {}, [cls[color]])} />
+                : <MoonIcon width={40} className={classNames(cls.icon, {}, [cls[color]])} />}
         </AppButton>
     );
 };
