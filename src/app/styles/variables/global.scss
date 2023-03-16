@@ -16,6 +16,10 @@
     --sidebar-width-collapsed: 80px;
 
     // Colors
-    --yellow: #faa61a;
+    --warning: #faa61a;
     --purple: #9e6af6;
+    --overlay-color: rgb(0 0 0 / 60%);
+
+    // z-indexes
+    --modal-z-index: 10;
 }
