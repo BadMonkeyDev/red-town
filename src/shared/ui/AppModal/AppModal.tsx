@@ -3,7 +3,6 @@ import {
     MouseEvent, ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
 import { AppPortal } from 'shared/ui/AppPortal/AppPortal';
-import { useTheme } from 'app/providers/ThemeProvider';
 import cls from './AppModal.module.scss';
 
 interface AppModalProps {
@@ -25,7 +24,6 @@ export const AppModal = (props:AppModalProps) => {
 
     const [isClosing, setIsClosing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
-    const { theme } = useTheme();
 
     const closeHandler = useCallback(() => {
         if (onClose) {
@@ -65,7 +63,7 @@ export const AppModal = (props:AppModalProps) => {
 
     return (
         <AppPortal>
-            <div className={classNames(cls.appModal, mods, [className, theme])}>
+            <div className={classNames(cls.appModal, mods, [className])}>
                 <div className={cls.overlay} onClick={closeHandler}>
                     <div className={cls.content} onClick={onContentClick}>
                         {children}

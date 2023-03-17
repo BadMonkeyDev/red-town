@@ -1,9 +1,10 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { Navbar } from './Navbar';
+import { ThemeProvider } from 'app/providers/ThemeProvider';
+import { ThemeList } from 'app/providers/ThemeProvider/lib/ThemeContext';
+
+import { Navbar } from 'widgets/Navbar';
 
 export default {
     title: 'widgets/Navbar',
@@ -13,11 +14,23 @@ export default {
     },
 } as ComponentMeta<typeof Navbar>;
 
-const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />;
+const TemplateLight: ComponentStory<typeof Navbar> = (args) => (
+    <ThemeProvider initialTheme={ThemeList.LIGHT}>
+        <div className={`app ${ThemeList.LIGHT}`}>
+            <Navbar {...args} />
+        </div>
+    </ThemeProvider>
+);
+const TemplateDark: ComponentStory<typeof Navbar> = (args) => (
+    <ThemeProvider initialTheme={ThemeList.DARK}>
+        <div className={`app ${ThemeList.DARK}`}>
+            <Navbar {...args} />
+        </div>
+    </ThemeProvider>
+);
 
-export const Light = Template.bind({});
+export const Light = TemplateLight.bind({});
 Light.args = {};
 
-export const Dark = Template.bind({});
+export const Dark = TemplateDark.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];

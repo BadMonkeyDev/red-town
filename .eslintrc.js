@@ -68,6 +68,10 @@ module.exports = {
             files: ['**/src/**/*.stories.{ts,tsx}'],
             rules: {
                 'max-len': 'off',
+                'import/no-extraneous-dependencies': 'off',
+                'react/jsx-props-no-spreading': 'off',
+                'i18next/no-literal-string': 'off',
+
             },
         },
     ],

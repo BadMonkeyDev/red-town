@@ -1,9 +1,11 @@
 import React, {
-    FC, ReactNode, useMemo, useState,
+    FC, ReactNode, useEffect, useMemo, useState,
 } from 'react';
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/ThemeContext';
+import {
+    LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext, ThemeList,
+} from '../lib/ThemeContext';
 
-const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || Theme.LIGHT;
+const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || ThemeList.LIGHT;
 
 interface ThemeProviderProps {
     initialTheme?: Theme,
@@ -22,6 +24,12 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
         theme,
         setTheme,
     }), [theme]);
+
+    const themes = useMemo(() => Object.values(ThemeList), []);
+    useEffect(() => {
+        document.body.classList.remove(...themes);
+        document.body.classList.add(theme);
+    }, [themes, theme]);
 
     return (
         <ThemeContext.Provider value={defaultProps}>

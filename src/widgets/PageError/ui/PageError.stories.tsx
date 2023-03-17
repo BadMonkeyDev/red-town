@@ -1,8 +1,9 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
+import { ThemeProvider } from 'app/providers/ThemeProvider';
+import { ThemeList } from 'app/providers/ThemeProvider/lib/ThemeContext';
+
 import { PageError } from 'widgets/PageError';
 
 export default {
@@ -13,11 +14,23 @@ export default {
     },
 } as ComponentMeta<typeof PageError>;
 
-const Template: ComponentStory<typeof PageError> = (args) => <PageError {...args} />;
+const TemplateLight: ComponentStory<typeof PageError> = (args) => (
+    <ThemeProvider initialTheme={ThemeList.LIGHT}>
+        <div className={`app ${ThemeList.LIGHT}`}>
+            <PageError {...args} />
+        </div>
+    </ThemeProvider>
+);
+const TemplateDark: ComponentStory<typeof PageError> = (args) => (
+    <ThemeProvider initialTheme={ThemeList.DARK}>
+        <div className={`app ${ThemeList.DARK}`}>
+            <PageError {...args} />
+        </div>
+    </ThemeProvider>
+);
 
-export const Light = Template.bind({});
+export const Light = TemplateLight.bind({});
 Light.args = {};
 
-export const Dark = Template.bind({});
+export const Dark = TemplateDark.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];

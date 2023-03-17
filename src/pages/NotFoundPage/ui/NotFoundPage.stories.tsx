@@ -1,8 +1,9 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
+import { ThemeProvider } from 'app/providers/ThemeProvider';
+import { ThemeList } from 'app/providers/ThemeProvider/lib/ThemeContext';
+
 import { NotFoundPage } from './NotFoundPage';
 
 export default {
@@ -13,11 +14,23 @@ export default {
     },
 } as ComponentMeta<typeof NotFoundPage>;
 
-const Template: ComponentStory<typeof NotFoundPage> = (args) => <NotFoundPage {...args} />;
+const TemplateLight: ComponentStory<typeof NotFoundPage> = (args) => (
+    <ThemeProvider initialTheme={ThemeList.LIGHT}>
+        <div className={`app ${ThemeList.LIGHT}`}>
+            <NotFoundPage {...args} />
+        </div>
+    </ThemeProvider>
+);
+const TemplateDark: ComponentStory<typeof NotFoundPage> = (args) => (
+    <ThemeProvider initialTheme={ThemeList.DARK}>
+        <div className={`app ${ThemeList.DARK}`}>
+            <NotFoundPage {...args} />
+        </div>
+    </ThemeProvider>
+);
 
-export const Light = Template.bind({});
+export const Light = TemplateLight.bind({});
 Light.args = {};
 
-export const Dark = Template.bind({});
+export const Dark = TemplateDark.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];

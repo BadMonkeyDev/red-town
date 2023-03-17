@@ -1,8 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
+import { ThemeList } from 'app/providers/ThemeProvider/lib/ThemeContext';
+import { ThemeProvider } from 'app/providers/ThemeProvider';
 import { AppModal } from './AppModal';
 
 export default {
@@ -13,17 +12,29 @@ export default {
     },
 } as ComponentMeta<typeof AppModal>;
 
-const Template: ComponentStory<typeof AppModal> = (args) => <AppModal {...args} />;
+const TemplateLight: ComponentStory<typeof AppModal> = (args) => (
+    <ThemeProvider initialTheme={ThemeList.LIGHT}>
+        <div className={`app ${ThemeList.LIGHT}`}>
+            <AppModal {...args} />
+        </div>
+    </ThemeProvider>
+);
+const TemplateDark: ComponentStory<typeof AppModal> = (args) => (
+    <ThemeProvider initialTheme={ThemeList.DARK}>
+        <div className={`app ${ThemeList.DARK}`}>
+            <AppModal {...args} />
+        </div>
+    </ThemeProvider>
+);
 
-export const Light = Template.bind({});
+export const Light = TemplateLight.bind({});
 Light.args = {
     isOpen: true,
-    children: 'Lorem ipsum dolor sit amet, consectetur adipisicinlique ore doloribus ullbusdam rem rerum soluta temporibus, tenetur voluptas voluptatibus voluptatum.',
+    children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 };
 
-export const Dark = Template.bind({});
+export const Dark = TemplateDark.bind({});
 Dark.args = {
     isOpen: true,
-    children: 'Lorem ipsum dolor sit amet, consectetur adipisora. A temporlestiae nemo oluptatibus voluptatum.',
+    children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 };
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
