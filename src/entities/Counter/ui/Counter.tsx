@@ -19,14 +19,14 @@ export const Counter = () => {
             display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'center',
         }}
         >
-            <h1>{counterValue}</h1>
+            <h1 data-testid="value-title">{counterValue}</h1>
             <div style={{ display: 'flex', gap: 16 }}>
                 {/* eslint-disable-next-line i18next/no-literal-string */}
-                <AppButton variant={AppButtonVariant.OUTLINED} onClick={increment}>
+                <AppButton variant={AppButtonVariant.OUTLINED} onClick={increment} data-testid="increment-button">
                     increment
                 </AppButton>
                 {/* eslint-disable-next-line i18next/no-literal-string */}
-                <AppButton variant={AppButtonVariant.OUTLINED} onClick={decrement}>
+                <AppButton data-testid="decrement-button" variant={AppButtonVariant.OUTLINED} onClick={decrement}>
                     decrement
                 </AppButton>
             </div>
