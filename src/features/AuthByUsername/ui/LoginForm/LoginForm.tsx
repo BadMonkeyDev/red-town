@@ -22,7 +22,7 @@ export const LoginForm = (props: LoginFormProps) => {
     return (
         <div className={cn(styles.root, [className])}>
             <form className={styles.form}>
-                <AppInput type="text" ref={textFieldRef} />
+                <AppInput type="text" ref={textFieldRef} autoFocus />
                 <AppInput type="password" />
             </form>
             <AppButton
