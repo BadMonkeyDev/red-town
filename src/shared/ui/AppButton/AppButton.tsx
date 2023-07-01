@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 import cn from 'classnames';
-import cls from './AppButton.module.scss';
+import styles from './AppButton.module.scss';
 
 export enum AppButtonVariant {
     CLEAR='clear',
@@ -45,9 +45,9 @@ export const AppButton: FC<AppButtonProps> = (props) => {
         <button
             type="button"
             className={cn(
-                cls.appButton,
-                { [cls.square]: square },
-                [className, cls[variant], cls[color], cls[size]],
+                styles.root,
+                { [styles.square]: square },
+                [className, styles[variant], styles[color], styles[size]],
             )}
             {...otherProps}
         >

@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { AppModal } from 'shared/ui/AppModal/AppModal';
 import { useCallback, useState } from 'react';
 import { AppButton, AppButtonColor, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
 import cn from 'classnames';
+import { LoginModal } from 'features/AuthByUsername';
 import styles from './Header.module.scss';
 
 interface HeaderProps {
@@ -12,8 +12,12 @@ interface HeaderProps {
 export const Header = ({ className }: HeaderProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const onToggleModal = useCallback(() => {
-        setIsOpen((prevState) => !prevState);
+    const onShowModal = useCallback(() => {
+        setIsOpen(true);
+    }, []);
+
+    const onCloseModal = useCallback(() => {
+        setIsOpen(false);
     }, []);
 
     const { t } = useTranslation();
@@ -24,21 +28,16 @@ export const Header = ({ className }: HeaderProps) => {
                     variant={AppButtonVariant.CLEAR}
                     color={AppButtonColor.SECONDARY_INVERTED}
                     className={styles.links}
-                    onClick={onToggleModal}
+                    onClick={onShowModal}
                 >
                     {t('Sign in')}
                 </AppButton>
             </div>
 
-            <AppModal
+            <LoginModal
                 isOpen={isOpen}
-                onClose={onToggleModal}
-
-            >
-                {/* eslint-disable-next-line i18next/no-literal-string */}
-                {/* eslint-disable-next-line i18next/no-literal-string */}
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, excepturi.
-            </AppModal>
+                onClose={onCloseModal}
+            />
         </div>
     );
 };

@@ -1,0 +1,91 @@
+.root {
+  display: grid;
+  gap: 10px;
+
+  input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--primary-color);
+    width: 100%;
+
+    &::placeholder {
+      font-style: italic;
+      font-weight: 600;
+      color: grey;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:focus {
+      transition: background-color 600000s 0s, color 600000s 0s;
+    }
+  }
+}
+
+.label {
+  align-self: center;
+}
+
+.inputWrapper {
+  width: 100%;
+  padding: 5px 10px;
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  border: 1px solid var(--primary-color);
+  outline: 1px solid transparent;
+}
+
+.helpText {
+  color: grey;
+  font-style: italic;
+}
+
+.errorText {
+  color: red;
+  font-style: italic;
+}
+
+.start {
+  grid-template-columns: auto 1fr;
+
+  .helpText, .errorText {
+    grid-column: 2;
+  }
+}
+
+.top {
+  grid-template-columns: 1fr;
+}
+
+.end {
+  grid-template-columns: 1fr auto;
+
+  .inputWrapper {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .label {
+    grid-column: 2;
+  }
+
+  .helpText, .errorText {
+    grid-column: 1;
+  }
+}
+
+.focused {
+  .inputWrapper {
+    outline-color: var(--primary-color);
+  }
+}
+
+.error:not(.focused) {
+  .label {
+    color: red;
+  }
+
+  .inputWrapper {
+    border-color: red;
+  }
+}

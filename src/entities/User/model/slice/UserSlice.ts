@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { CounterSchema } from 'entities/Counter';
+import { UserSchema } from '../types/user';
 
-const initialState: CounterSchema = {
-    value: 0,
-};
+const initialState:UserSchema = {};
 
 export const userSlice = createSlice({
     name: 'user',
@@ -13,8 +11,5 @@ export const userSlice = createSlice({
     },
 });
 
-// Action creators are generated for each case reducer function
 export const { actions: userActions } = userSlice;
 export const { reducer: userReducer } = userSlice;
-
-export default userSlice.reducer;

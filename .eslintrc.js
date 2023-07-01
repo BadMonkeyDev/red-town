@@ -42,7 +42,7 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'warn',
         'i18next/no-literal-string': [
-            'error',
+            'warn',
             {
                 markupOnly: true,
                 ignoreAttribute: ['data-testid', 'to'],
