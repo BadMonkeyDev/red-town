@@ -1,7 +1,7 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import {
     MouseEvent, ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
+import cn from 'classnames';
 import { AppPortal } from 'shared/ui/AppPortal/AppPortal';
 import cls from './AppModal.module.scss';
 
@@ -63,7 +63,7 @@ export const AppModal = (props:AppModalProps) => {
 
     return (
         <AppPortal>
-            <div className={classNames(cls.appModal, mods, [className])}>
+            <div className={cn(cls.appModal, mods, className)}>
                 <div className={cls.overlay} onClick={closeHandler}>
                     <div className={cls.content} onClick={onContentClick}>
                         {children}

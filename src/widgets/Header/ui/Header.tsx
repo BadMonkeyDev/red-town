@@ -1,9 +1,9 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { AppModal } from 'shared/ui/AppModal/AppModal';
 import { useCallback, useState } from 'react';
 import { AppButton, AppButtonColor, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
-import cls from './Header.module.scss';
+import cn from 'classnames';
+import styles from './Header.module.scss';
 
 interface HeaderProps {
     className?: string;
@@ -18,12 +18,12 @@ export const Header = ({ className }: HeaderProps) => {
 
     const { t } = useTranslation();
     return (
-        <div className={classNames(cls.header, {}, [className])}>
-            <div className={cls.items}>
+        <div className={cn(styles.root, className)}>
+            <div className={styles.items}>
                 <AppButton
                     variant={AppButtonVariant.CLEAR}
                     color={AppButtonColor.SECONDARY_INVERTED}
-                    className={cls.links}
+                    className={styles.links}
                     onClick={onToggleModal}
                 >
                     {t('Sign in')}

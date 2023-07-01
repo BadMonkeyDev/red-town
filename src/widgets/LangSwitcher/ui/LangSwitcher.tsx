@@ -1,8 +1,8 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import React, { FC } from 'react';
 import { AppButton, AppButtonColor, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
-import cls from './LangSwitcher.module.scss';
+import cn from 'classnames';
+import styles from './LangSwitcher.module.scss';
 
 interface LangSwitcherProps {
     className?: string;
@@ -17,13 +17,12 @@ export const LangSwitcher: FC<LangSwitcherProps> = (props) => {
     };
     return (
         <AppButton
-            className={classNames(cls.langSwitcher, {}, [className, cls.button])}
+            className={cn(styles.root, [className, styles.button])}
             variant={AppButtonVariant.CLEAR}
             color={AppButtonColor.PRIMARY_INVERTED}
             onClick={toggleLanguage}
         >
-
-            {t(short ? 'Short language' : 'Language')}
+            {short ? t('Short language') : t('Language')}
         </AppButton>
     );
 };

@@ -1,4 +1,3 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import React, { useState } from 'react';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
@@ -7,7 +6,8 @@ import {
 } from 'shared/ui/AppButton/AppButton';
 import { Navbar } from 'widgets/Navbar';
 import { NavbarDirection, NavbarMode } from 'widgets/Navbar/ui/Navbar';
-import cls from './Sidebar.module.scss';
+import cn from 'classnames';
+import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
     className?: string;
@@ -23,7 +23,11 @@ export const Sidebar = ({ className }: SidebarProps) => {
     return (
         <div
             data-testid="sidebar"
-            className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [className])}
+            className={cn(
+                styles.root,
+                { [styles.collapsed]: collapsed },
+                [className],
+            )}
         >
             <Navbar
                 direction={NavbarDirection.COLUMN}
@@ -36,11 +40,11 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 color={AppButtonColor.PRIMARY_INVERTED}
                 size={AppButtonSize.L}
                 onClick={onToggle}
-                className={classNames(cls.collapsedBtn)}
+                className={styles.collapsedBtn}
             >
                 {collapsed ? '>' : '<'}
             </AppButton>
-            <div className={classNames(cls.switchers)}>
+            <div className={styles.switchers}>
                 <ThemeSwitcher />
                 <LangSwitcher short={collapsed} />
             </div>

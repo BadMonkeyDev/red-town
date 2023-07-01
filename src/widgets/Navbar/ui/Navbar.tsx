@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import HomeIcon from 'shared/assets/icons/home.svg';
 import AboutIcon from 'shared/assets/icons/about.svg';
-import cls from './Navbar.module.scss';
+import cn from 'classnames';
+import styles from './Navbar.module.scss';
 
 export enum NavbarMode {
     LINKS='mode-links',
@@ -39,23 +39,23 @@ export const Navbar: FC<NavbarProps> = (props) => {
     } = props;
     const { t } = useTranslation();
     return (
-        <div className={classNames(cls.navbar, {}, [className, cls[direction], cls[variant], cls[mode]])}>
-            <div className={cls.items}>
+        <div className={cn(styles.root, [className, styles[direction], styles[variant], styles[mode]])}>
+            <div className={styles.items}>
                 <AppLink
                     to={RoutePath.main}
                     theme={AppLinkTheme.SECONDARY}
-                    className={cls.item}
+                    className={styles.item}
                 >
-                    <HomeIcon className={cls.icon} />
-                    <span className={cls.link}>{t('Main')}</span>
+                    <HomeIcon className={styles.icon} />
+                    <span className={styles.link}>{t('Main')}</span>
                 </AppLink>
                 <AppLink
                     to={RoutePath.about}
                     theme={AppLinkTheme.SECONDARY}
-                    className={cls.item}
+                    className={styles.item}
                 >
-                    <AboutIcon className={cls.icon} />
-                    <span className={cls.link}>{t('About')}</span>
+                    <AboutIcon className={styles.icon} />
+                    <span className={styles.link}>{t('About')}</span>
                 </AppLink>
             </div>
         </div>
