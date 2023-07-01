@@ -10,5 +10,7 @@
   "Unexpected error": "Сталася непередбачена помилка",
   "Refresh page": "Оновити сторінку",
   "throw error": "викликати помилку",
-  "Sign in": "Увійти"
+  "Sign in": "Увійти",
+  "increment": "increment",
+  "decrement": "decrement"
 }

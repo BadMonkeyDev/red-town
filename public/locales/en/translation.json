@@ -11,5 +11,7 @@
   "Unexpected error": "Unexpected error",
   "Refresh page": "Refresh page",
   "throw error": "throw error",
-  "Sign in": "Sign in"
+  "Sign in": "Sign in",
+  "increment": "increment",
+  "decrement": "decrement"
 }
