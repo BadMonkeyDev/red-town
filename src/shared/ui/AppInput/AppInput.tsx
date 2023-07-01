@@ -1,5 +1,5 @@
 import {
-    ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef, useState,
+    ChangeEvent, ForwardedRef, forwardRef, InputHTMLAttributes, memo, useEffect, useState,
 } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import cn from 'classnames';
@@ -16,10 +16,9 @@ interface AppInputProps extends HTMLInputProps {
   helpText?: string;
   error?: string;
   showError?: boolean;
-  autofocus?: boolean;
 }
 
-export const AppInput = memo((props: AppInputProps) => {
+export const Input = forwardRef((props:AppInputProps, ref:ForwardedRef<HTMLInputElement>) => {
     const {
         className,
         value,
@@ -30,22 +29,18 @@ export const AppInput = memo((props: AppInputProps) => {
         helpText,
         error,
         showError = true,
-        autofocus = false,
         ...otherProps
     } = props;
-
-    const ref = useRef<HTMLInputElement>();
 
     const Id = uuidv4();
 
     const [focused, setFocused] = useState<boolean>(false);
 
     useEffect(() => {
-        if (autofocus) {
-            setFocused(true);
-            ref.current?.focus();
+        if (ref && 'current' in ref) {
+            ref.current.focus();
         }
-    }, [autofocus]);
+    }, [ref]);
 
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         onChange?.(event.target.value);
@@ -88,3 +83,5 @@ export const AppInput = memo((props: AppInputProps) => {
         </div>
     );
 });
+
+export const AppInput = memo(Input);

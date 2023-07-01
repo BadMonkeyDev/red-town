@@ -3,7 +3,7 @@ import {
 } from 'react';
 import cn from 'classnames';
 import { AppPortal } from 'shared/ui/AppPortal/AppPortal';
-import cls from './AppModal.module.scss';
+import styles from './AppModal.module.scss';
 
 interface AppModalProps {
     className?: string;
@@ -25,6 +25,7 @@ export const AppModal = (props:AppModalProps) => {
     } = props;
 
     const [isClosing, setIsClosing] = useState(false);
+    const [isOpening, setIsOpening] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
@@ -56,18 +57,22 @@ export const AppModal = (props:AppModalProps) => {
 
     useEffect(() => {
         if (isOpen) {
+            timerRef.current = setTimeout(() => {
+                setIsOpening(true);
+            }, 0);
             window.addEventListener('keydown', onKeyDown);
         }
 
         return () => {
+            setIsOpening(false);
             clearTimeout(timerRef.current);
             window.removeEventListener('keydown', onKeyDown);
         };
     }, [isOpen, onKeyDown]);
 
     const mods: Record<string, boolean> = {
-        [cls.opened]: isOpen,
-        [cls.closing]: isClosing,
+        [styles.opened]: isOpening,
+        [styles.closing]: isClosing,
     };
 
     if (lazy && !isMounted) {
@@ -76,9 +81,9 @@ export const AppModal = (props:AppModalProps) => {
 
     return (
         <AppPortal>
-            <div className={cn(cls.appModal, mods, className)}>
-                <div className={cls.overlay} onClick={closeHandler}>
-                    <div className={cls.content} onClick={onContentClick}>
+            <div className={cn(styles.appModal, mods, className)}>
+                <div className={styles.overlay} onClick={closeHandler}>
+                    <div className={styles.content} onClick={onContentClick}>
                         {children}
                     </div>
                 </div>

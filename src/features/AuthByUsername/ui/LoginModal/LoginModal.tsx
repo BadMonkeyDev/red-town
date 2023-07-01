@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { AppModal } from 'shared/ui/AppModal/AppModal';
+import { useEffect, useRef } from 'react';
 import { LoginForm } from '../LoginForm';
 import styles from './LoginModal.module.scss';
 
@@ -15,6 +16,15 @@ export const LoginModal = (props: LoginModalProps) => {
         isOpen,
         onClose,
     } = props;
+
+    const ref = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (isOpen) {
+            ref.current?.focus();
+        }
+    }, [isOpen]);
+
     return (
         <AppModal
             className={cn(styles.root, [className])}
@@ -22,7 +32,7 @@ export const LoginModal = (props: LoginModalProps) => {
             onClose={onClose}
             lazy
         >
-            <LoginForm />
+            <LoginForm textFieldRef={ref} />
         </AppModal>
     );
 };
