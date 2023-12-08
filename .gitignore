@@ -1,5 +1,0 @@
-/build
-node_modules
-.idea
-/storybook-static
-/json-server/tokens.json
