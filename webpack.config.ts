@@ -6,6 +6,7 @@ const paths: BuildPaths = {
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     output: path.resolve(__dirname, "build"),
     html: path.resolve(__dirname, 'public', 'index.html'),
+    srcPath: path.resolve(__dirname, 'src')
 }
 
 export default (env: BuildEnv) => {
