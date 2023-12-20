@@ -5,12 +5,13 @@ import {AboutPage} from "./pages/AboutPage";
 import {Suspense} from "react";
 import {useTheme} from "./theme/useTheme";
 import {ThemeEnum} from "./theme/ThemeContext";
+import cn from './helpers/classNames'
 
 export const App = () => {
   const {theme, toggleTheme} = useTheme()
 
   return (
-    <div className={`app ${theme}`}>
+    <div className={cn('app', theme)}>
       <ul>
         <li>
           <button onClick={toggleTheme}>{`switch to ${theme === ThemeEnum.DARK ? ThemeEnum.LIGHT : ThemeEnum.DARK}`}</button>
