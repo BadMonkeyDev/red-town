@@ -15,8 +15,15 @@
 }
 
 .switchers {
+  display: flex;
+  align-items: center;
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+
+  .lang {
+    margin-left: 15px;
+    color: var(--inverted-primary-color);
+  }
 }
