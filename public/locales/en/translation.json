@@ -1,5 +1,7 @@
 {
   "about": "about",
+  "content": "",
   "locale": "uk",
-  "main": "main"
+  "main": "main",
+  "toggle": "toggle"
 }

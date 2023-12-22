@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import cn from '@/shared/lib/classNames';
 import { Button } from '@/shared/ui/Button';
 import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
@@ -14,6 +15,8 @@ export const Sidebar = (props: SidebarProps) => {
     className,
   } = props;
 
+  const { t } = useTranslation();
+
   const [collapsed, setCollapsed] = useState<boolean>(false);
 
   const onToggle = () => {
@@ -28,10 +31,10 @@ export const Sidebar = (props: SidebarProps) => {
         }}
         onClick={onToggle}
       >
-        toggle sidebar
+        {t('toggle')}
       </Button>
       <div style={{ marginTop: '20px' }}>
-        content
+        {t('content')}
       </div>
       <div className={styles.switchers}>
         <ThemeSwitcher />
