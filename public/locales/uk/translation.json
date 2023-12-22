@@ -1,7 +1,9 @@
 {
   "about": "про нас",
-  "content": "",
+  "content": "контент",
+  "loading": "заватаження",
   "locale": "en",
   "main": "головна",
+  "page_not_found": "сторінку не знайдено",
   "toggle": "перемкнути"
 }

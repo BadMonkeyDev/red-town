@@ -1,7 +1,9 @@
 {
   "about": "about",
-  "content": "",
+  "content": "content",
+  "loading": "loading",
   "locale": "uk",
   "main": "main",
+  "page_not_found": "page not found",
   "toggle": "toggle"
 }

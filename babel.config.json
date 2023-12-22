@@ -7,7 +7,10 @@
     [
       "i18next-extract",
       {
-        "locales": ["uk", "en"],
+        "locales": [
+          "uk",
+          "en"
+        ],
         "outputPath": "public/locales/{{locale}}/{{ns}}.json",
         "keyAsDefaultValue": false,
         "discardOldKeys": true

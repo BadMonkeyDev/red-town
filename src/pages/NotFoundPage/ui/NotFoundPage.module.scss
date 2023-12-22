@@ -1,0 +1,14 @@
+/* stylelint-disable-next-line */
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 72px;
+  height: 100%;
+}
+
+.notFoundText {
+  span:first-of-type {
+    text-transform: uppercase;
+  }
+}
