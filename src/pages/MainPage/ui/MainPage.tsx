@@ -5,7 +5,7 @@ const MainPage = () => {
 
   return (
     <div className={''}>
-      {t('main')}
+      {t('main', {ns: 'main'})}
     </div>
   )
 }

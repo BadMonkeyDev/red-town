@@ -5,7 +5,7 @@ const AboutPage = () => {
 
   return (
     <div className={''}>
-      {t('about')}
+      {t('about', {ns: 'about'})}
     </div>
   )
 }
