@@ -1,4 +1,4 @@
-import {Link, LinkProps} from "react-router-dom";
+import { Link, LinkProps } from 'react-router-dom';
 import cn from '@/shared/lib/classNames';
 import styles from './AppLink.module.scss';
 
@@ -23,9 +23,10 @@ export const AppLink = (props: AppLinkProps) => {
   return (
     <Link
       className={cn(styles.root, className, styles[theme])}
+      /* eslint-disable-next-line react/jsx-props-no-spreading */
       {...restLinkProps}
     >
       {children}
     </Link>
-  )
-}
+  );
+};

@@ -1,10 +1,8 @@
-type ClassValue = string | number | ClassDictionary | ClassArray | undefined | null | false;
-
 interface ClassDictionary {
   [id: string]: boolean | undefined | null;
 }
 
-interface ClassArray extends Array<ClassValue> {}
+type ClassValue = string | number | ClassDictionary | Array<ClassValue> | undefined | null | false;
 
 export default function classnames(...args: ClassValue[]): string {
   const classes: string[] = [];

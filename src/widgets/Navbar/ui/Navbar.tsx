@@ -1,5 +1,5 @@
-import cn from '@/shared/lib/classNames'
-import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink";
+import cn from '@/shared/lib/classNames';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import styles from './Navbar.module.scss';
 
 export interface NavbarProps {
@@ -18,5 +18,5 @@ export const Navbar = (props: NavbarProps) => {
         <AppLink theme={AppLinkTheme.SECONDARY} to="/about">about</AppLink>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -1,8 +1,8 @@
-import {ButtonHTMLAttributes, PropsWithChildren} from "react";
+import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import cn from '@/shared/lib/classNames';
 import styles from './Button.module.scss';
 
-export  enum ThemeButton {
+export enum ThemeButton {
     CLEAR='clear',
 }
 
@@ -20,8 +20,13 @@ export const Button = (props: PropsWithChildren<ButtonProps>) => {
   } = props;
 
   return (
-    <button className={cn(styles.root, className, styles[theme])} {...restButtonProps}>
+    <button
+      type="button"
+      className={cn(styles.root, className, styles[theme])}
+      /* eslint-disable-next-line react/jsx-props-no-spreading */
+      {...restButtonProps}
+    >
       {children}
     </button>
-  )
-}
+  );
+};
