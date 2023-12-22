@@ -1,0 +1,16 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "indentation": [2],
+    "no-empty-source": [
+      true, {
+        "severity": "warning"
+      }
+    ],
+    "block-no-empty": [
+      true, {
+        "severity": "warning"
+      }
+    ]
+  }
+}

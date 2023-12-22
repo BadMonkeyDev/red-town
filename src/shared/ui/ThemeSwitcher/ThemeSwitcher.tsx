@@ -1,9 +1,9 @@
 import cn from '@/shared/lib/classNames';
-import styles from './ThemeSwitcher.module.scss';
-import { ThemeEnum, useTheme } from '@/app/providers/ThemeProvider';
 import LightIcon from '@/shared/assets/icons/theme-light.svg';
 import DarkIcon from '@/shared/assets/icons/theme-dark.svg';
 import { Button } from '@/shared/ui/Button';
+import { ThemeEnum, useTheme } from '@/app/providers/ThemeProvider';
+import styles from './ThemeSwitcher.module.scss';
 
 export interface ThemeSwitcherProps {
   className?: string;
