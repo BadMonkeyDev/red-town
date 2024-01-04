@@ -19,4 +19,8 @@
       "module": "CommonJS"
     }
   },
+  "include": [
+    "./config/jest/setupTests.ts",
+    "./src/app/types/global.d.ts"
+  ]
 }

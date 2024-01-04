@@ -24,8 +24,12 @@ export const Sidebar = (props: SidebarProps) => {
   };
 
   return (
-    <div className={cn(styles.root, { [styles.collapsed]: collapsed }, className)}>
+    <div
+      data-testid="sidebar"
+      className={cn(styles.root, { [styles.collapsed]: collapsed }, className)}
+    >
       <Button
+        data-testid="sidebar-toggle"
         style={{
           border: '1px solid teal', padding: '5px 10px', color: 'teal', borderRadius: '4px',
         }}
