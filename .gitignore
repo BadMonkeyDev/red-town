@@ -1,5 +1,7 @@
 /build
 node_modules
 .idea
-/yarn.lock
 /storybook-static
+.loki/report.html
+.loki/report.json
+/yarn.lock
