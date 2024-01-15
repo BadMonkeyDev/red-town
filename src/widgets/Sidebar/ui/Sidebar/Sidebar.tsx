@@ -1,49 +1,36 @@
+import { classNames } from 'shared/lib/classNames/classNames';
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import cn from '@/shared/lib/classNames';
-import { Button } from '@/shared/ui/Button';
-import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
-import { LangSwitcher } from '@/shared/ui/LangSwitcher';
-import styles from './Sidebar.module.scss';
+import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
+import { LangSwitcher } from 'shared/ui/LangSwitcher/LangSwitcher';
+import { Button } from 'shared/ui/Button/Button';
+import cls from './Sidebar.module.scss';
 
-export interface SidebarProps {
-  className?: string;
+interface SidebarProps {
+    className?: string;
 }
 
-export const Sidebar = (props: SidebarProps) => {
-  const {
-    className,
-  } = props;
+export const Sidebar = ({ className }: SidebarProps) => {
+    const [collapsed, setCollapsed] = useState(false);
 
-  const { t } = useTranslation();
+    const onToggle = () => {
+        setCollapsed((prev) => !prev);
+    };
 
-  const [collapsed, setCollapsed] = useState<boolean>(false);
-
-  const onToggle = () => {
-    setCollapsed((prevState) => !prevState);
-  };
-
-  return (
-    <div
-      data-testid="sidebar"
-      className={cn(styles.root, { [styles.collapsed]: collapsed }, className)}
-    >
-      <Button
-        data-testid="sidebar-toggle"
-        style={{
-          border: '1px solid teal', padding: '5px 10px', color: 'teal', borderRadius: '4px',
-        }}
-        onClick={onToggle}
-      >
-        {t('toggle')}
-      </Button>
-      <div style={{ marginTop: '20px' }}>
-        {t('content')}
-      </div>
-      <div className={styles.switchers}>
-        <ThemeSwitcher />
-        <LangSwitcher className={styles.lang} />
-      </div>
-    </div>
-  );
+    return (
+        <div
+            data-testid="sidebar"
+            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
+        >
+            <Button
+                data-testid="sidebar-toggle"
+                onClick={onToggle}
+            >
+                toggle
+            </Button>
+            <div className={cls.switchers}>
+                <ThemeSwitcher />
+                <LangSwitcher className={cls.lang} />
+            </div>
+        </div>
+    );
 };

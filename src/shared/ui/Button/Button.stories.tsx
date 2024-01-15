@@ -1,28 +1,40 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Button, ButtonProps, ThemeButton } from './Button';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { ThemeEnum } from '@/app/providers/ThemeProvider';
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from 'app/providers/ThemeProvider';
+import { Button, ThemeButton } from './Button';
 
 export default {
-  title: 'shared/button',
-  component: Button,
+    title: 'shared/Button',
+    component: Button,
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
 } as ComponentMeta<typeof Button>;
 
-// eslint-disable-next-line react/jsx-props-no-spreading
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-const createThemedButtonStory = (
-  theme: ThemeButton,
-  args: ButtonProps = { children: 'button', theme },
-  decoratorTheme: ThemeEnum = ThemeEnum.LIGHT,
-) => ({
-  ...Template.bind({}),
-  args,
-  decorators: [ThemeDecorator(decoratorTheme)],
-});
+export const Primary = Template.bind({});
+Primary.args = {
+    children: 'Text',
+};
 
-export const ClearLight = createThemedButtonStory(ThemeButton.CLEAR);
-export const ClearDark = createThemedButtonStory(ThemeButton.CLEAR, undefined, ThemeEnum.DARK);
+export const Clear = Template.bind({});
+Clear.args = {
+    children: 'Text',
+    theme: ThemeButton.CLEAR,
+};
 
-export const OutlineLight = createThemedButtonStory(ThemeButton.OUTLINE);
-export const OutlineDark = createThemedButtonStory(ThemeButton.OUTLINE, undefined, ThemeEnum.DARK);
+export const Outline = Template.bind({});
+Outline.args = {
+    children: 'Text',
+    theme: ThemeButton.OUTLINE,
+};
+
+export const OutlineDark = Template.bind({});
+OutlineDark.args = {
+    children: 'Text',
+    theme: ThemeButton.OUTLINE,
+};
+OutlineDark.decorators = [ThemeDecorator(Theme.DARK)];

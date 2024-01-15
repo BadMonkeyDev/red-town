@@ -2,22 +2,14 @@
   "presets": [
     "@babel/preset-env",
     "@babel/preset-typescript",
-    ["@babel/preset-react", {
-     "runtime": "automatic"
-    }]
-  ],
-  "plugins": [
     [
-      "i18next-extract",
+      "@babel/preset-react",
       {
-        "locales": [
-          "uk",
-          "en"
-        ],
-        "outputPath": "public/locales/{{locale}}/{{ns}}.json",
-        "keyAsDefaultValue": false,
-        "discardOldKeys": true
+        "runtime": "automatic"
       }
     ]
+  ],
+  "plugins": [
+    "i18next-extract"
   ]
 }

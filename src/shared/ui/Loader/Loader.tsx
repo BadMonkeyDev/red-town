@@ -1,37 +1,15 @@
-import { CSSProperties } from 'react';
-import cn from '@/shared/lib/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import './Loader.scss';
 
-export interface PageLoaderProps {
-  className?: string;
-  color?: string;
-  size?: number;
+interface LoaderProps {
+    className?: string;
 }
 
-export const Loader = (props: PageLoaderProps) => {
-  const {
-    className,
-    color = 'teal',
-    size = 80,
-  } = props;
-
-  return (
-    <div
-      className={cn(className, 'lds-spinner')}
-      style={{ '--spinner-color': color, '--size': `${size}px` } as CSSProperties}
-    >
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
+export const Loader = ({ className }: LoaderProps) => (
+    <div className={classNames('lds-ellipsis', {}, [className])}>
+        <div />
+        <div />
+        <div />
+        <div />
     </div>
-  );
-};
+);
