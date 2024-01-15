@@ -1,4 +1,11 @@
 {
+  "about": "about",
   "content": "content",
-  "toggle": "toggle"
+  "locale": "uk",
+  "main": "main",
+  "page_not_found": "page not found",
+  "reload_page": "reload page",
+  "throw_error": "throw error",
+  "toggle": "toggle",
+  "unexpected_error": "unexpected error"
 }
