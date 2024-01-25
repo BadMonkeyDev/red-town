@@ -1,14 +1,7 @@
-/* stylelint-disable-next-line */
-.root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 72px;
-  height: 100%;
-}
-
-.notFoundText {
-  span:first-of-type {
-    text-transform: uppercase;
-  }
+.NotFoundPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: var(--font-l);
+    height: 100%;
 }

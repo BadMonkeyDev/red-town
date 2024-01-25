@@ -1,47 +1,40 @@
-import cn from '@/shared/lib/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 
 describe('classNames', () => {
-  test('one string param', () => {
-    expect(cn('test')).toBe('test');
-  });
+    test('with only first param', () => {
+        expect(classNames('someClass')).toBe('someClass');
+    });
 
-  test('two string params', () => {
-    expect(cn('test', 'bebe')).toBe('test bebe');
-  });
+    test('with additional class', () => {
+        const expected = 'someClass class1 class2';
+        expect(classNames('someClass', {}, ['class1', 'class2']))
+            .toBe(expected);
+    });
 
-  test('one mode param', () => {
-    expect(cn({ dodo: true })).toBe('dodo');
-  });
+    test('with mods', () => {
+        const expected = 'someClass class1 class2 hovered scrollable';
+        expect(classNames(
+            'someClass',
+            { hovered: true, scrollable: true },
+            ['class1', 'class2'],
+        )).toBe(expected);
+    });
 
-  test('two mode params in one obj', () => {
-    expect(cn({ dodo: true, didi: true })).toBe('dodo didi');
-  });
+    test('with mods false', () => {
+        const expected = 'someClass class1 class2 hovered';
+        expect(classNames(
+            'someClass',
+            { hovered: true, scrollable: false },
+            ['class1', 'class2'],
+        )).toBe(expected);
+    });
 
-  test('two mode params in one obj (one false)', () => {
-    expect(cn({ dodo: true, didi: false })).toBe('dodo');
-  });
-
-  test('two mode params with string', () => {
-    expect(cn('test', { dodo: true, didi: false })).toBe('test dodo');
-  });
-
-  test('two mode params two obj(both true)', () => {
-    expect(cn({ dodo: true }, { didi: true })).toBe('dodo didi');
-  });
-
-  test('two mode params two obj(one false)', () => {
-    expect(cn({ dodo: true }, { didi: false })).toBe('dodo');
-  });
-
-  test('array param', () => {
-    expect(cn(['dudu', 'dada'])).toBe('dudu dada');
-  });
-
-  test('array param with obj', () => {
-    expect(cn(['dudu', 'dada', { dede: true }])).toBe('dudu dada dede');
-  });
-
-  test('string + mode + array', () => {
-    expect(cn('test', { dodo: true }, { didi: false }, ['dudu', 'dada'], 'bebe')).toBe('test dodo dudu dada bebe');
-  });
+    test('with mods undefined', () => {
+        const expected = 'someClass class1 class2 hovered';
+        expect(classNames(
+            'someClass',
+            { hovered: true, scrollable: undefined },
+            ['class1', 'class2'],
+        )).toBe(expected);
+    });
 });
